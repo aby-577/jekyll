@@ -3,12 +3,12 @@ layout: index
 ---
 
 
-<<div class="container-fluid">
+<div class="container-fluid">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
       
       <!-- 文章列表开始 -->
-      {% for post in site.posts %}
+      {% for post in paginator.posts %}
         <div class="post-preview">
           <a href="{{site.baseurl}}{{post.url}}">
             <h2 class="post-title">{{post.title}}</h2>
@@ -19,9 +19,23 @@ layout: index
         <hr>
       {% endfor %}
       <!-- 文章列表结束 -->
-      
+     
       <!-- Pager -->
-      
+      <div class="clearfix">
+      	{% if paginator.previous_page %}
+        <a class="btn btn-primary float-left" href="{{site.baseurl}}{{paginator.previous_page_path}}">&larr; 上一页</a>
+        {% else %}
+        <button class="btn float-left" disabled>没有了</button>
+        {% endif %}
+
+        {% if paginator.next_page %}
+        <a class="btn btn-primary float-right" href="{{paginator.next_page_path | prepend: site.baseurl}}">下一页 &rarr;</a>
+        {% else %}
+        <button class="btn float-right" disabled>没有了</button>
+        {% endif %}
+      </div>
+
+
     </div>
   </div>
 </div>

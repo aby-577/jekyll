@@ -1,2 +1,5 @@
 baseurl: /jekyll
 author: aby
+paginate: 4
+
+plugins: [jekyll-paginate]
